@@ -16,7 +16,7 @@ export default function App() {
 				backgroundPosition: 'center',
 			}}>
 			{/* Navbar */}
-			<header className="absolute top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 py-6 bg-opacity-40 z-10">
+			<header className="absolute top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 py-6 bg-opacity-40 z-20">
 				<div className="flex items-center space-x-4">
 					<img
 						src={crossLogo}
@@ -52,43 +52,57 @@ export default function App() {
 					</a>
 				</nav>
 
-				{/* Mobile Menu */}
+				{/* Mobile Menu Button */}
 				<button
 					className="md:hidden text-3xl text-white"
-					onClick={() => setMenuOpen(!menuOpen)}>
+					onClick={() => setMenuOpen(true)}>
 					☰
 				</button>
-				{menuOpen && (
-					<nav className="absolute top-16 left-0 w-full bg-black bg-opacity-90 flex flex-col items-center py-6 space-y-4 text-lg font-medium">
-						<a
-							href="#home"
-							className="hover:text-white">
-							Home
-						</a>
-						<a
-							href="#informasi"
-							className="hover:text-white">
-							Informasi
-						</a>
-						<a
-							href="#hadiah"
-							className="hover:text-white">
-							Hadiah
-						</a>
-						<a
-							href="#lokasi"
-							className="hover:text-white">
-							Lokasi
-						</a>
-					</nav>
-				)}
 			</header>
+
+			{/* Mobile Drawer Menu */}
+			<div
+				className={`fixed top-0 right-0 h-full w-64 bg-black bg-opacity-90 shadow-lg transform transition-transform duration-300 z-50 ${
+					menuOpen ? 'translate-x-0' : 'translate-x-full'
+				}`}>
+				<button
+					className="absolute top-5 right-5 text-3xl text-white"
+					onClick={() => setMenuOpen(false)}>
+					✖
+				</button>
+				<nav className="flex flex-col items-start p-6 space-y-4 mt-12 text-lg font-medium">
+					<a
+						href="#home"
+						className="hover:text-green-400"
+						onClick={() => setMenuOpen(false)}>
+						Home
+					</a>
+					<a
+						href="#informasi"
+						className="hover:text-green-400"
+						onClick={() => setMenuOpen(false)}>
+						Informasi
+					</a>
+					<a
+						href="#hadiah"
+						className="hover:text-green-400"
+						onClick={() => setMenuOpen(false)}>
+						Hadiah
+					</a>
+					<a
+						href="#lokasi"
+						className="hover:text-green-400"
+						onClick={() => setMenuOpen(false)}>
+						Lokasi
+					</a>
+				</nav>
+			</div>
 
 			{/* Hero Section */}
 			<section
 				id="home"
-				className="relative h-screen flex flex-col justify-center items-center text-center px-6">
-				<div className="relative z-10 max-w-5xl">
+				className="relative h-screen flex flex-col justify-center items-center text-center px-6 z-10">
+				<div className="relative max-w-5xl">
 					<h2 className="text-5xl md:text-8xl font-extrabold uppercase text-white tracking-wide drop-shadow-lg">
 						Grasstrack 2025
 					</h2>
