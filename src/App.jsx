@@ -1,120 +1,105 @@
 /** @format */
 
 import React, { useState } from 'react';
+import crossLogo from './assets/cross.png';
+import heroImage from './assets/cross3.png';
 
 export default function App() {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	return (
-		<div className="font-sans text-gray-900">
-			{/* Header Section */}
-			<header className="bg-black text-white py-5 px-8 flex justify-between items-center">
-				<h1 className="text-2xl font-bold">
-					Grasstrack Open 2025 - Pemuda Cup
-				</h1>
-
-				{/* Hamburger Menu */}
-				<button
-					className="block md:hidden"
-					onClick={() => setMenuOpen(!menuOpen)}>
-					<span className="text-3xl">☰</span>
-				</button>
+		<div
+			className="font-sans text-white min-h-screen relative overflow-hidden"
+			style={{
+				backgroundImage: `url(${heroImage})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+			}}>
+			{/* Navbar */}
+			<header className="absolute top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 py-6 bg-opacity-40 z-10">
+				<div className="flex items-center space-x-4">
+					<img
+						src={crossLogo}
+						alt="Motocross Logo"
+						className="h-10"
+					/>
+					<h1 className="text-lg md:text-xl font-bold tracking-widest uppercase text-white">
+						Grasstrack 2025
+					</h1>
+				</div>
 
 				{/* Navigation */}
-				<nav
-					className={`absolute md:static top-16 left-0 w-full bg-black md:bg-transparent md:flex md:justify-end md:space-x-4 px-8 py-4 md:py-0 transition-all duration-300 ${
-						menuOpen ? 'block' : 'hidden'
-					}`}>
-					<ul className="flex flex-col md:flex-row md:space-x-4">
-						<li>
-							<a
-								href="#informasi"
-								className="hover:text-yellow-400 block py-2 md:py-0">
-								Informasi
-							</a>
-						</li>
-						<li>
-							<a
-								href="#kelas"
-								className="hover:text-yellow-400 block py-2 md:py-0">
-								Kelas
-							</a>
-						</li>
-						<li>
-							<a
-								href="#hadiah"
-								className="hover:text-yellow-400 block py-2 md:py-0">
-								Hadiah
-							</a>
-						</li>
-						<li>
-							<a
-								href="#lokasi"
-								className="hover:text-yellow-400 block py-2 md:py-0">
-								Lokasi
-							</a>
-						</li>
-						<li>
-							<a
-								href="#kontak"
-								className="hover:text-yellow-400 block py-2 md:py-0">
-								Kontak
-							</a>
-						</li>
-					</ul>
+				<nav className="hidden md:flex space-x-6 md:space-x-8 text-sm md:text-lg font-medium">
+					<a
+						href="#home"
+						className="hover:text-white">
+						Home
+					</a>
+					<a
+						href="#informasi"
+						className="hover:text-white">
+						Informasi
+					</a>
+					<a
+						href="#hadiah"
+						className="hover:text-white">
+						Hadiah
+					</a>
+					<a
+						href="#lokasi"
+						className="hover:text-white">
+						Lokasi
+					</a>
 				</nav>
+
+				{/* Mobile Menu */}
+				<button
+					className="md:hidden text-3xl text-white"
+					onClick={() => setMenuOpen(!menuOpen)}>
+					☰
+				</button>
+				{menuOpen && (
+					<nav className="absolute top-16 left-0 w-full bg-black bg-opacity-90 flex flex-col items-center py-6 space-y-4 text-lg font-medium">
+						<a
+							href="#home"
+							className="hover:text-white">
+							Home
+						</a>
+						<a
+							href="#informasi"
+							className="hover:text-white">
+							Informasi
+						</a>
+						<a
+							href="#hadiah"
+							className="hover:text-white">
+							Hadiah
+						</a>
+						<a
+							href="#lokasi"
+							className="hover:text-white">
+							Lokasi
+						</a>
+					</nav>
+				)}
 			</header>
 
-			{/* Informasi Section */}
+			{/* Hero Section */}
 			<section
-				id="informasi"
-				className="py-16 px-8 bg-gray-100 text-center">
-				<h2 className="text-3xl font-bold mb-4">Informasi Event</h2>
-				<p className="text-lg max-w-2xl mx-auto">
-					Saksikan & Ikuti! Grasstrack Open 2025 - Pemuda Cup, ajang balapan
-					motocross spektakuler yang akan berlangsung pada:
-				</p>
-				<p className="text-xl font-semibold mt-4">📅 12 - 13 April 2025</p>
-				<p className="text-xl font-semibold">
-					📍 Sirkuit Bukit Ajo Bokudo, Kep. Sintong Pusaka, Kecamatan Tanah
-					Putih, Kab. Rokan Hilir
-				</p>
-				<p className="text-green-500 font-bold mt-4">🎟️ Nonton Gratis!</p>
-			</section>
-
-			{/* Lokasi Section */}
-			<section
-				id="lokasi"
-				className="py-16 px-8 text-center">
-				<h2 className="text-3xl font-bold mb-4">Lokasi</h2>
-				<p className="text-lg">
-					Sirkuit Bukit Ajo Bokudo, Kep. Sintong Pusaka, Kecamatan Tanah Putih,
-					Kab. Rokan Hilir
-				</p>
-				<div className="mt-6">
-					<iframe
-						title="Google Maps"
-						className="w-full max-w-lg h-64 mx-auto rounded-lg shadow-lg"
-						src="https://www.google.com/maps/embed?pb=!4v1742116980131!6m8!1m7!1sUrJ6wK6IbN_EFdRhlwm61Q!2m2!1d1.522177915104492!2d100.9820540450856!3f117.44191881271104!4f0!5f0.7820865974627469"
-						allowFullScreen=""
-						loading="lazy"
-						style={{ border: 0 }}
-						referrerPolicy="no-referrer-when-downgrade"></iframe>
+				id="home"
+				className="relative h-screen flex flex-col justify-center items-center text-center px-6">
+				<div className="relative z-10 max-w-5xl">
+					<h2 className="text-5xl md:text-8xl font-extrabold uppercase text-white tracking-wide drop-shadow-lg">
+						Grasstrack 2025
+					</h2>
+					<div className="flex flex-col md:flex-row justify-between text-md md:text-lg font-semibold uppercase mt-4 text-white">
+						<span>12 - 13 April 2025</span>
+						<span>Sirkuit Bukit Ajo Bokudo</span>
+					</div>
+					<p className="text-sm md:text-lg mt-4 text-white max-w-3xl mx-auto">
+						Ajang balap motocross spektakuler, penuh aksi dan adrenalin!
+					</p>
 				</div>
-			</section>
-
-			{/* Kontak Section */}
-			<section
-				id="kontak"
-				className="py-16 px-8 bg-gray-100 text-center">
-				<h2 className="text-3xl font-bold mb-4">Kontak</h2>
-				<p className="text-lg">Hubungi kami untuk informasi lebih lanjut:</p>
-				<p className="mt-4 text-xl font-semibold">
-					📞 +62 823 2494 8925 (Yono)
-				</p>
-				<p className="mt-2 text-xl font-semibold">
-					📞 +62 822 8931 0087 (Andi)
-				</p>
 			</section>
 		</div>
 	);
